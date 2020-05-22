@@ -46,14 +46,14 @@ class StationsController extends BaseController
      */
     public function actionCreate()
     {
-        $model = new Stations();
+        $station = new Stations();
         $request['Stations'] = Yii::$app->request->post();
 
-        if ($model->load($request) && $model->save()) {
-            return $model;
+        if ($station->load($request) && $station->save()) {
+            return $station;
         }
 
-        return $model->getErrors();
+        return $station->getErrors();
     }
 
     /**
@@ -65,13 +65,13 @@ class StationsController extends BaseController
         $id = Yii::$app->request->post('id');
         $request['Stations'] = Yii::$app->request->post();
 
-        $model = $this->findModel($id);
+        $station = $this->findModel($id);
 
-        if ($model->load($request) && $model->save()) {
-            return $model;
+        if ($station->load($request) && $station->save()) {
+            return $station;
         }
 
-        return $model->getErrors();
+        return $station->getErrors();
     }
 
     /**
