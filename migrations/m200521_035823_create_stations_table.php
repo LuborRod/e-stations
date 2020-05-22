@@ -15,9 +15,10 @@ class m200521_035823_create_stations_table extends Migration
         $this->createTable('{{%stations}}', [
             'id' => $this->primaryKey(),
             'city' => $this->string(),
-            'address' => $this->string(),
-            'opening_time' => $this->string(5),
-            'closing_time' => $this->string(5),
+            'address' => $this->string()->notNull()->unique(),
+            'opening_time' => $this->time(),
+            'closing_time' => $this->time(),
+            '24h' => $this->boolean()->notNull()->defaultValue(false),
         ]);
     }
 
