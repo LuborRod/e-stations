@@ -21,7 +21,7 @@ You can run this project in 2 ways :
 - Run script - 'php yii migrate'
 
 Now you have to config your web server(apache, nginx) to root - web/ OR
-you can run php server - "php -S localhost:8888" (port you can change)
+you can run php server - "php -S localhost:8888 -t web/" (port you can change)
 
 ------------READY----------------------------------
 
