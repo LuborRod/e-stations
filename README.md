@@ -23,13 +23,27 @@ You can run this project in 2 ways :
 Now you have to config your web server(apache, nginx) to root - web/ OR
 you can run php server - "php -S localhost:8888 -t web/" (port you can change)
 
-------------READY----------------------------------
+--------------------------------------------------------
 
-- DOCKER(if you have docker + docker-compose installed)
+2) BY DOCKER(if you have docker + docker-compose installed)
+- Clone this repository from github
+- Create config/local.db.php and copy text below(I do this for another type of installation and for secure work with credentials)
+```
+<?php
 
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=macpaw-db;dbname=macpaw',
+    'username' => 'root',
+    'password' => 'pass',
+    'charset' => 'utf8',
+    
+];
+```
+- Run script 'make init'
+- Run script 'make migrations'
 
-            It will be done later
-
+Now your host - localhost:8888. If you want to change port - you can edit docker-compose.yml
 
 -------------API-DOCUMENTATION---------------------
 

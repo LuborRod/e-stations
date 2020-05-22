@@ -6,6 +6,7 @@ use app\modules\api\controllers\base\BaseController;
 use Yii;
 use app\models\Stations;
 use yii\db\ActiveRecord;
+use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -59,10 +60,13 @@ class StationsController extends BaseController
     /**
      * @return Stations|array
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws BadRequestHttpException
      */
     public function actionUpdate()
     {
-        $id = Yii::$app->request->post('id');
+        if(!$id = Yii::$app->request->post('id')) {
+            throw new BadRequestHttpException("You have to set 'id' of station for update");
+        };
         $request['Stations'] = Yii::$app->request->post();
 
         $station = $this->findModel($id);
