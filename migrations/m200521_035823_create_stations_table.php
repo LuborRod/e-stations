@@ -18,7 +18,7 @@ class m200521_035823_create_stations_table extends Migration
             'address' => $this->string()->notNull()->unique(),
             'opening_time' => $this->time(),
             'closing_time' => $this->time(),
-            '24h' => $this->boolean()->notNull()->defaultValue(false),
+            'all_hours' => $this->boolean()->notNull()->defaultValue(false),
         ]);
     }
 

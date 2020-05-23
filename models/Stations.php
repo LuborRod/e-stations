@@ -13,7 +13,7 @@ use yii\db\ActiveRecord;
  * @property string $address
  * @property string $opening_time
  * @property string $closing_time
- * @property boolean $24h
+ * @property boolean $all_hours
  */
 class Stations extends ActiveRecord
 {
@@ -33,7 +33,7 @@ class Stations extends ActiveRecord
         return [
             [['city', 'opening_time', 'closing_time', 'address'], 'required'],
             [['address'], 'unique'],
-            [['24h'], 'boolean'],
+            [['all_hours'], 'boolean'],
             [['opening_time', 'closing_time'], 'date', 'format' => 'HH:mm'],
             [['city', 'address'], 'string', 'max' => 255],
             [['opening_time'], 'validateTime'],
@@ -51,7 +51,7 @@ class Stations extends ActiveRecord
             'address' => 'Address',
             'opening_time' => 'Opening Time',
             'closing_time' => 'Closing Time',
-            '24h' => '24H',
+            'all_hours' => 'All Hours',
         ];
     }
 
@@ -87,7 +87,7 @@ class Stations extends ActiveRecord
         return self::find()
             ->where(['<','opening_time', $now])
             ->andWhere(['>','closing_time', $now])
-            ->orWhere(['24h' => true])
+            ->orWhere(['all_hours' => true])
             ->andWhere(['city' => $city])
             ->all();
     }

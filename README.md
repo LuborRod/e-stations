@@ -23,6 +23,14 @@ You can run this project in 2 ways :
 Now you have to config your web server(apache, nginx) to root - web/ OR
 you can run php server - "php -S localhost:8888 -t web/" (port you can change)
 
+-------------------------TESTING--------------------------------------
+
+If you want to make tests,  you have to create another mysql database - "your_name_test", 
+then change file config/test_db.php with you credentials(host + dbname).
+
+Run script(from root directory) - 'cd tests/bin/ && php yii migrate'
+Run script(from root directory) - './vendor/bin/codecept run'          (not finished yet)
+    
 --------------------------------------------------------
 
 2) BY DOCKER(if you have docker + docker-compose installed)
@@ -55,7 +63,7 @@ Requests and responses will be in JSON format.
 
  - create => {your host}/api/stations/create 
  
-      PARAMS POST(all required, except 24h) - 
+      PARAMS POST(all required, except 'all_hours') - 
       
             1) 'city' - string 
             
@@ -65,7 +73,7 @@ Requests and responses will be in JSON format.
             
             4) 'closing_time' - time (only in format "HH:mm")
             
-            5) (optional)'24h' - boolean (default value - false, if you want to create station which works round the clock you have to send TRUE, in opening_time and closing_time you should send 00-00)
+            5) (optional)'all_hours' - boolean (default value - false, if you want to create station which works round the clock you have to send TRUE, in opening_time and closing_time you should send 00-00)
             
       RETURN - new object of Station      
         
@@ -83,7 +91,7 @@ Requests and responses will be in JSON format.
                     
                     4) 'closing_time' - time (only in format "HH:mm")
                     
-                    5) '24h' - boolean
+                    5) 'all_hours' - boolean
                     
         RETURN - updated object pf Station
                     
